@@ -15,6 +15,8 @@ then use mono to build and run chidraqul
 
 ``
 mcs chidraqul.cs
+``
 
+``
 mono chidraqul.exe
 ``
