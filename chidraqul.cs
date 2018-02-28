@@ -342,7 +342,7 @@ class Sample
         int i24 = 0;
         int cookies = 0;
         int cookielvl = 0;
-        int lvlcookies = 1;
+        int lvlcookies = 1; //how many cookies you get on level up
         int cookiedelay = 10000000;
         int pclvl = 50; //pricecookielevel
         int fps = 64;
@@ -1322,14 +1322,14 @@ class Sample
                     lvl++;
                     plusgold++;
                     gold = gold + plusgold;
-                    cookies = cookies + plusgold;
+                    cookies = cookies + lvlcookies;
                     i = 0;
                     plusneededxp = plusneededxp + 100;
                     neededxp = neededxp + plusneededxp;
-                    String.Format("LEVEL UP!!!  YOU ARE NOW LEVEL {0}   +{1} Gold  +{2} cookies", lvl, plusgold, plusgold); //fick buses
+                    String.Format("LEVEL UP!!!  YOU ARE NOW LEVEL {0}   +{1} Gold  +{2} cookies", lvl, plusgold, lvlcookies);
                     data = "LEVEL UP!!!  YOU ARE NOW LEVEL {0}   +{1} Gold  +{2} cookies";
 
-                    inputmsg = string.Format(data, lvl, plusgold, plusgold);
+                    inputmsg = string.Format(data, lvl, plusgold, lvlcookies);
 
                     if (msg3 == "" && msg2 == "" && msg != "")
                     {
@@ -5339,11 +5339,125 @@ class Sample
                             Console.WriteLine("buy cookie                            buy 1 cookie");
                             Console.WriteLine("buy cookielvl                         upgrade your cookie lvl");
                             Console.WriteLine("sell cookies all                      sells all your cookies");
-                            Console.WriteLine("sell cookies 5                        sells 5 of your cookies");
-                            Console.WriteLine("sell cookies 10                       sells 10 of your cookies");
-                            Console.WriteLine("roll cookies all                      rolls all your cookies");
-                            Console.WriteLine("roll cookies 5                        rolls 5 of your cookies");
+                            //Console.WriteLine("sell cookies 5                        sells 5 of your cookies");
+                            //Console.WriteLine("sell cookies 10                       sells 10 of your cookies");
+                            //Console.WriteLine("roll cookies all                      rolls all your cookies");
+                            //Console.WriteLine("roll cookies 5                        rolls 5 of your cookies");
                             Console.WriteLine("roll cookies 10                       rolls 10 of your cookies");
+                        }
+                        else if (input == "roll cookies 10")
+                        {
+                            if (cookies < 10)
+                            {
+                                inputmsg = "You dont have enough cookies (10).";
+
+                                if (msg3 == "" && msg2 == "" && msg != "")
+                                {
+                                    i13 = i;
+                                    i = 0;
+                                    msg2 = msg;
+                                    msg = inputmsg;
+                                }
+                                else if (msg3 == "" && msg2 != "" && msg != "")
+                                {
+                                    i23 = i13;
+                                    i13 = i;
+                                    i = 0;
+                                    msg3 = msg2;
+                                    msg2 = msg;
+                                    msg = inputmsg;
+                                }
+                                else if (msg3 != "" && msg2 != "" && msg != "")
+                                {
+                                    i23 = i13;
+                                    i13 = i;
+                                    i = 0;
+                                    msg3 = msg2;
+                                    msg2 = msg;
+                                    msg = inputmsg;
+                                }
+                                else
+                                {
+                                    i = 0;
+                                    msg = inputmsg;
+                                }
+                            }
+                            else
+                            {
+                                int rand_cookie_won_variable = rnd.Next(5,1000);
+                                if (rand_cookie_won_variable < 500) //won
+                                {
+                                    cookies += 10;
+                                    inputmsg = "You won 10 cookies!";
+
+                                    if (msg3 == "" && msg2 == "" && msg != "")
+                                    {
+                                        i13 = i;
+                                        i = 0;
+                                        msg2 = msg;
+                                        msg = inputmsg;
+                                    }
+                                    else if (msg3 == "" && msg2 != "" && msg != "")
+                                    {
+                                        i23 = i13;
+                                        i13 = i;
+                                        i = 0;
+                                        msg3 = msg2;
+                                        msg2 = msg;
+                                        msg = inputmsg;
+                                    }
+                                    else if (msg3 != "" && msg2 != "" && msg != "")
+                                    {
+                                        i23 = i13;
+                                        i13 = i;
+                                        i = 0;
+                                        msg3 = msg2;
+                                        msg2 = msg;
+                                        msg = inputmsg;
+                                    }
+                                    else
+                                    {
+                                        i = 0;
+                                        msg = inputmsg;
+                                    }
+                                }
+                                else //lost
+                                {
+                                    cookies -= 10;
+                                    inputmsg = "You lost 10 cookies!";
+
+                                    if (msg3 == "" && msg2 == "" && msg != "")
+                                    {
+                                        i13 = i;
+                                        i = 0;
+                                        msg2 = msg;
+                                        msg = inputmsg;
+                                    }
+                                    else if (msg3 == "" && msg2 != "" && msg != "")
+                                    {
+                                        i23 = i13;
+                                        i13 = i;
+                                        i = 0;
+                                        msg3 = msg2;
+                                        msg2 = msg;
+                                        msg = inputmsg;
+                                    }
+                                    else if (msg3 != "" && msg2 != "" && msg != "")
+                                    {
+                                        i23 = i13;
+                                        i13 = i;
+                                        i = 0;
+                                        msg3 = msg2;
+                                        msg2 = msg;
+                                        msg = inputmsg;
+                                    }
+                                    else
+                                    {
+                                        i = 0;
+                                        msg = inputmsg;
+                                    }
+                                }
+                            }
                         }
                         else if (input == "cookie stats" || input == "cstats")
                         {
