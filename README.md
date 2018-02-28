@@ -20,3 +20,9 @@ mcs chidraqul.cs
 ``
 mono chidraqul.exe
 ``
+
+# building on Windows
+
+add the path to your csc.exe compiler to your PATH variable
+it should be something like ``C:\Windows\Microsoft.NET\Framework\v3.5``
+then execute the ``compiler.bat``
