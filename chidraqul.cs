@@ -1,10 +1,5 @@
 /*
     chidraqul the game. Made by ChillerDragon.
-    
-    License:
-       Feel free to use and edit the code for own projects.
-       Also for commercial projects.
-       But always keep this license in here and credit ChillerDragon.
 */
 
 using System;
